@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.douglas.myapplication.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class  LoginActivity extends AppCompatActivity {
 
     Button btnEntrar;
     EditText edtPswd, edtLogin;
