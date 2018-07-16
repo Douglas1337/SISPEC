@@ -27,4 +27,6 @@
     <string name="EscolhaAPropriedade">Escolha a propriedade que o animal está</string>
     <string name="numeracaoDoBrinco">Nº do Brinco</string>
     <string name="lerChip">Ler Chip</string>
+    <string name="title_activity_registrar">RegistrarActivity</string>
+    <string name="Registrar">Registrar</string>
 </resources>

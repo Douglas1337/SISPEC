@@ -24,7 +24,11 @@
         <activity android:name=".Telas.NfcActivity" />
         <activity android:name=".Telas.CadastroPropriedadeActivity" />
         <activity android:name=".Telas.LoginActivity" />
-        <activity android:name=".Telas.CadastroRebanhoActivity"></activity>
+        <activity android:name=".Telas.CadastroRebanhoActivity" />
+        <activity
+            android:name=".Telas.RegistrarActivity"
+            android:label="@string/title_activity_registrar"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

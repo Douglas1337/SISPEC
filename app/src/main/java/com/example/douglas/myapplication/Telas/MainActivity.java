@@ -27,4 +27,6 @@ public class MainActivity extends AppCompatActivity {
     public void callNfc(View v){
         Intent i = new Intent(MainActivity.this,NfcActivity.class);
     }
+
+
 }

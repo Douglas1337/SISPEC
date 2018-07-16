@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verde1"
-    tools:context="com.example.douglas.myapplication.Telas.MainActivity">
+    tools:context="com.example.douglas.myapplication.Telas.LoginActivity">
 
 
 
@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/edtLogin"
                 android:hint="LOGIN"
                 android:textSize="25sp"
                 android:textAlignment="center"
@@ -23,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="25sp"/>
             <EditText
+                android:id="@+id/edtPswd"
                 android:hint="SENHA"
                 android:inputType="textPassword"
                 android:textSize="25sp"
@@ -32,6 +34,7 @@
                 android:layout_margin="25sp"/>
 
             <Button
+                android:id="@+id/btnEntrar"
                 android:layout_width="match_parent"
                 android:onClick="callEntrar"
                 android:layout_height="wrap_content"
@@ -39,6 +42,11 @@
                 android:background="@drawable/botao_customizado"
                 android:textSize="25sp"
                 android:text="@string/entrar" />
+            <TextView
+                android:onClick="callRegistrar"
+                android:text="Registrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 </LinearLayout>
