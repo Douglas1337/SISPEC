@@ -29,4 +29,10 @@
     <string name="lerChip">Ler Chip</string>
     <string name="title_activity_registrar">RegistrarActivity</string>
     <string name="Registrar">Registrar</string>
+    <string name="obsPswdMatch">OBS:A senha e a repetição devem coincidirem.</string>
+    <string name="obsMinCharacter">OBS:Login deve conter no mínimo 6 caracteres.</string>
+    <string name="pswd">Digite sua senha.</string>
+    <string name="pswd2">Digite sua senha novamente.</string>
+
+
 </resources>

@@ -25,7 +25,7 @@
             android:layout_margin="25sp"/>
         <EditText
             android:id="@+id/edtPswd1"
-            android:hint="Digite sua senha"
+            android:hint="@string/pswd"
             android:inputType="textPassword"
             android:textSize="25sp"
             android:textAlignment="center"
@@ -34,7 +34,7 @@
             android:layout_margin="25sp"/>
         <EditText
             android:id="@+id/edtPswd2"
-            android:hint="Digite sua senha novamente"
+            android:hint="@string/pswd2"
             android:inputType="textPassword"
             android:textSize="16sp"
             android:textAlignment="center"
@@ -51,6 +51,14 @@
             android:background="@drawable/botao_customizado"
             android:textSize="25sp"
             android:text="@string/Registrar" />
+        <TextView
+            android:text="@string/obsMinCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="@string/obsPswdMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
