@@ -3,12 +3,8 @@ package com.example.douglas.myapplication.Telas;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +29,8 @@ public class RegistrarActivity extends AppCompatActivity {
         edtPswd1 = (EditText) findViewById(R.id.edtPswd1);
         edtPswd2 = (EditText) findViewById(R.id.edtPswd2);
 
+        helper = new DatabaseHelper(getApplicationContext());
+
     }
 
     public void callRegistar(View v) {
@@ -44,12 +42,23 @@ public class RegistrarActivity extends AppCompatActivity {
 
 
         if (val){ //se as senhas forem iguais
-            //SQLiteDatabase db = helper.getWritableDatabase();
-            //ContentValues cv = new ContentValues();
-            //cv.put("login",login);
-            //cv.put("senha", pswd1);
-            //Intent i = new Intent(RegistrarActivity.this, LoginActivity.class);
-            Toast.makeText(this, "ADICIONA NO BANCO E MANDA PRA OUTRA TELA",Toast.LENGTH_SHORT).show();
+            SQLiteDatabase db = helper.getWritableDatabase();
+
+            ContentValues cv = new ContentValues();
+            cv.put("login",login);
+            cv.put("senha", pswd1);
+
+            long resultado = db.insert("login",null,cv);
+            if(resultado !=-1){
+                Toast.makeText(this, "CADASTRADO COM SUCESSO, REDIRECIONANDO PARA LOGIN.",Toast.LENGTH_LONG).show();
+                Intent i = new Intent(RegistrarActivity.this, LoginActivity.class);
+                startActivity(i);
+            }else{
+                Toast.makeText(this, "ERRO AO CADASTRAR.",Toast.LENGTH_SHORT).show();
+            }
+
+
+
         }else{
             Toast.makeText(this, " Confira se ambos os campos de senha estão iguais ou se login tem mais de 6 caracteres",Toast.LENGTH_LONG).show();
         }

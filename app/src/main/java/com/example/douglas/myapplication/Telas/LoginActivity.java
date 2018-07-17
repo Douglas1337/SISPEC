@@ -24,13 +24,13 @@ public class  LoginActivity extends AppCompatActivity {
         edtLogin = (EditText) findViewById(R.id.edtLogin);
         edtPswd = (EditText) findViewById(R.id.edtPswd);
     }
-    //DEVE SER ALTERADO PRA LOGIN E SENHA SEREM ATIVOS
+    //logica para o usuário entrar no sistema
     public void callEntrar(View v){
         Intent i = new Intent(LoginActivity.this,MainActivity.class);
         startActivity(i);
     }
 
-
+//chama a Activity de Registro de usuário
     public void callRegistrar(View view) {
         Intent i = new Intent(LoginActivity.this,RegistrarActivity.class);
         startActivity(i);

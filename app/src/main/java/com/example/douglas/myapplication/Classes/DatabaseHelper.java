@@ -9,7 +9,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String BANCO_DADOS ="BD_SISPEC";
     private static int VERSAO =1;
 
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DatabaseHelper(Context context) {
         super(context, BANCO_DADOS, null, VERSAO);
     }
 
