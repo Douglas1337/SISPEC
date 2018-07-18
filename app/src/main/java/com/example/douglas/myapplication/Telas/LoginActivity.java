@@ -1,18 +1,29 @@
 package com.example.douglas.myapplication.Telas;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.douglas.myapplication.Classes.DatabaseHelper;
 import com.example.douglas.myapplication.R;
 
-public class  LoginActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-    Button btnEntrar;
-    EditText edtPswd, edtLogin;
+public class LoginActivity extends AppCompatActivity {
+
+    private DatabaseHelper helper;
+
+    private Button btnEntrar;
+    private EditText edtPswd, edtLogin;
+    //private List<Map<String,String>> lista;
 
 
     @Override
@@ -20,19 +31,51 @@ public class  LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnEntrar =(Button) findViewById(R.id.btnEntrar);
+        btnEntrar = (Button) findViewById(R.id.btnEntrar);
         edtLogin = (EditText) findViewById(R.id.edtLogin);
         edtPswd = (EditText) findViewById(R.id.edtPswd);
+        helper = new DatabaseHelper(this);
     }
+
     //logica para o usuário entrar no sistema
-    public void callEntrar(View v){
-        Intent i = new Intent(LoginActivity.this,MainActivity.class);
+    public void callEntrar(View v) {
+        String login = edtLogin.getText().toString();
+        String senha = edtPswd.getText().toString();
+        if (login.equals("") || senha.equals("")) {
+            Toast.makeText(this, "Há campos em branco", Toast.LENGTH_LONG).show();
+        } else {
+
+            if (buscaUsuario(login, senha)) {
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
+            } else {
+                Toast.makeText(this, "Usuário ou senha incorretos!", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    //chama a Activity de Registro de usuário
+    public void callRegistrar(View view) {
+        Intent i = new Intent(LoginActivity.this, RegistrarActivity.class);
         startActivity(i);
     }
 
-//chama a Activity de Registro de usuário
-    public void callRegistrar(View view) {
-        Intent i = new Intent(LoginActivity.this,RegistrarActivity.class);
-        startActivity(i);
+    private boolean buscaUsuario(String login, String senha) {
+
+        String sql = "Select id from login where login='" + login + "' and senha=" + senha + ";";
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        int qtdLogin = cursor.getCount();//conta o retorno de quantos foram selecionados
+        if (qtdLogin > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        helper.close();
     }
 }
