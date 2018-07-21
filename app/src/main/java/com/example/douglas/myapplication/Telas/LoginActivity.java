@@ -10,12 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.douglas.myapplication.Classes.DatabaseHelper;
+import com.example.douglas.myapplication.banco.DatabaseHelper;
 import com.example.douglas.myapplication.R;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button btnEntrar;
     private EditText edtPswd, edtLogin;
-    //private List<Map<String,String>> lista;
 
 
     @Override
@@ -44,9 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         if (login.equals("") || senha.equals("")) {
             Toast.makeText(this, "Há campos em branco", Toast.LENGTH_LONG).show();
         } else {
-
-            if (buscaUsuario(login, senha)) {
+                int extra = helper.buscaUsuario(login,senha);
+            if ( extra != -1) {
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                i.putExtra("idUsuario",extra); //passando a idUsuario logado para a intent main
                 startActivity(i);
             } else {
                 Toast.makeText(this, "Usuário ou senha incorretos!", Toast.LENGTH_LONG).show();
@@ -60,19 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private boolean buscaUsuario(String login, String senha) {
 
-        String sql = "Select id from login where login='" + login + "' and senha=" + senha + ";";
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(sql, null);
-        int qtdLogin = cursor.getCount();//conta o retorno de quantos foram selecionados
-        if (qtdLogin > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     protected void onDestroy() {
         super.onDestroy();

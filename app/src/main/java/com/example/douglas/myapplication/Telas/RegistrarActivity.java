@@ -1,17 +1,15 @@
 package com.example.douglas.myapplication.Telas;
 
-import android.content.ContentValues;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.douglas.myapplication.Classes.DatabaseHelper;
+import com.example.douglas.myapplication.Classes.Usuario;
+import com.example.douglas.myapplication.banco.DatabaseHelper;
 import com.example.douglas.myapplication.R;
 
 public class RegistrarActivity extends AppCompatActivity {
@@ -24,13 +22,10 @@ public class RegistrarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
-
         edtLogin = (EditText) findViewById(R.id.edtLogin);
         edtPswd1 = (EditText) findViewById(R.id.edtPswd1);
         edtPswd2 = (EditText) findViewById(R.id.edtPswd2);
-
         helper = new DatabaseHelper(getApplicationContext());
-
     }
 
     public void callRegistar(View v) {
@@ -41,18 +36,15 @@ public class RegistrarActivity extends AppCompatActivity {
         if (login.equals("") || pswd1.equals("") || pswd2.equals("")) { //verifica campos em branco
             Toast.makeText(this, "Não podem haver campos vazios para cadastrar um usuário.", Toast.LENGTH_LONG).show();
         } else {
-            if (buscaLoginRepetido(login)) { //verifica se tem um login duplicado
+            if (helper.buscaLoginRepetido(login)) { //verifica se tem um login duplicado
                 Toast.makeText(this, "Este login já está sendo utilizado, escolha outro.", Toast.LENGTH_LONG).show();
             } else {
                 boolean val = validaLoginSenha(login, pswd1, pswd2);
                 if (val) { //se as senhas forem iguais
-                    SQLiteDatabase db = helper.getWritableDatabase();
-
-                    ContentValues cv = new ContentValues();
-                    cv.put("login", login);
-                    cv.put("senha", pswd1);
-
-                    long resultado = db.insert("login", null, cv);
+                    Usuario usuario = new Usuario();
+                    usuario.setLogin(login);
+                    usuario.setSenha(pswd1);
+                    long resultado = helper.insereUsuario(usuario);
                     if (resultado != -1) {
                         Toast.makeText(this, "CADASTRADO COM SUCESSO, REDIRECIONANDO PARA LOGIN.", Toast.LENGTH_LONG).show();
                         Intent i = new Intent(RegistrarActivity.this, LoginActivity.class);
@@ -75,18 +67,7 @@ public class RegistrarActivity extends AppCompatActivity {
         }
     }
 
-    private Boolean buscaLoginRepetido(String login) {
-        String sql = "Select id from login where login='" + login + "';";
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(sql, null);
-        int qtdLogin = cursor.getCount();//conta o retorno de quantos foram selecionados
-        if (qtdLogin > 0) {
-            return true;
-        } else {
-            return false;
-        }
 
-    }
 
     protected void onDestroy() {
         super.onDestroy();
