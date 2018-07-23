@@ -56,8 +56,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
-
     protected void onDestroy() {
         super.onDestroy();
         helper.close();

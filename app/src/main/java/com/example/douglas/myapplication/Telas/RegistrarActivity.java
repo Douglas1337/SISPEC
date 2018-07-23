@@ -46,11 +46,11 @@ public class RegistrarActivity extends AppCompatActivity {
                     usuario.setSenha(pswd1);
                     long resultado = helper.insereUsuario(usuario);
                     if (resultado != -1) {
-                        Toast.makeText(this, "CADASTRADO COM SUCESSO, REDIRECIONANDO PARA LOGIN.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Cadastrado com sucesso.", Toast.LENGTH_LONG).show();
                         Intent i = new Intent(RegistrarActivity.this, LoginActivity.class);
                         startActivity(i);
                     } else {
-                        Toast.makeText(this, "ERRO AO CADASTRAR.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Erro ao cadastrar.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(this, " Confira se ambos os campos de senha estão iguais ou se login tem mais de 6 caracteres", Toast.LENGTH_LONG).show();

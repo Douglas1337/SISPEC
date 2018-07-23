@@ -33,6 +33,8 @@
     <string name="obsMinCharacter">OBS:Login deve conter no mínimo 6 caracteres.</string>
     <string name="pswd">Digite sua senha.</string>
     <string name="pswd2">Digite sua senha novamente.</string>
+    <string name="campoLocalidade">Campo LOCALIDADE Obrigatório!</string>
+    <string name="campoPropriedade">Campo NOME PROPRIEDADE Obrigatório!</string>
 
 
 </resources>

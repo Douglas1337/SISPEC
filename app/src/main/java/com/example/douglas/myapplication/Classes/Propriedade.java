@@ -12,6 +12,8 @@ public class Propriedade {
     private String cpfProprietario;
     private String municipio;
     private String localidade;
+    private int idUsuario;
+
 
     public String getNome() {
         return nome;
@@ -60,4 +62,17 @@ public class Propriedade {
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
+
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+
+
+
 }

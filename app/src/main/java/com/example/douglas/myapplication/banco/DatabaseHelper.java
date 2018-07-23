@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.douglas.myapplication.Classes.Propriedade;
 import com.example.douglas.myapplication.Classes.Usuario;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //COLUNAS TABELA PROPRIEDADES
     private static final String KEY_ID_PROPRIEDADE = "idPropriedade";
     private static final String KEY_NOME_PROPRIEDADE = "nome";
-    private static final String KEY_EXTENSAO_PROPRIEDADE = "extensão";
+    private static final String KEY_EXTENSAO_PROPRIEDADE = "extensao";
     private static final String KEY_NOME_PROPRIETARIO = "nomeProprietario";
     private static final String KEY_CPFCNPJ_PROPRIETARIO = "cpfCnpjProprietario";
     private static final String KEY_NOME_MUNICIPIO = "municipio";
@@ -237,6 +238,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
 
+    }
+
+    public long inserePropriedade(Propriedade propriedade) {
+
+        ContentValues cv = new ContentValues();
+        cv.put("nome",propriedade.getNome());
+        cv.put("extensao",propriedade.getExtensao());
+        cv.put("nomeProprietario",propriedade.getProprietario());
+        cv.put("cpfCnpjProprietario",propriedade.getCpfProprietario());
+        cv.put("municipio",propriedade.getMunicipio());
+        cv.put("localidade",propriedade.getLocalidade());
+        cv.put("fkUsuario", propriedade.getIdUsuario());
+
+        long res = getWritableDatabase().insert("propriedades",null,cv);
+
+        return res;
     }
 }
 
