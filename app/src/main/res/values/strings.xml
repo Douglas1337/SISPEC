@@ -18,7 +18,7 @@
     <string name="nomePropriedade">Nome da Propriedade</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="extensaoPropriedade">Extensão da Propriedade (ha)</string>
-    <string name="nomeProprietario">Nome do Proprietário</string>
+    <string name="numRegistro">Nº do Registro de saúde</string>
     <string name="cpfcnpjProprietario">CPF ou CNPJ do Proprietário</string>
     <string name="municipioPropriedade">Município</string>
     <string name="localidadePropriedade">Localidade</string>
@@ -35,6 +35,12 @@
     <string name="pswd2">Digite sua senha novamente.</string>
     <string name="campoLocalidade">Campo LOCALIDADE Obrigatório!</string>
     <string name="campoPropriedade">Campo NOME PROPRIEDADE Obrigatório!</string>
+    <string name="nomeProprietario">Nome do Proprietário</string>
+    <string name="raca">Raça</string>
+    <string name="pelagem">Pelagem</string>
+    <string name="tipo">Tipo</string>
+    <string name="origemPai">Origem Pai</string>
+    <string name="origemMae">Origem Mãe</string>
 
 
 </resources>

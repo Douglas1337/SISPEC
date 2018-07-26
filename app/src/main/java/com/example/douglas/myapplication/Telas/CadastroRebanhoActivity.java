@@ -33,7 +33,7 @@ public class  CadastroRebanhoActivity extends AppCompatActivity {
         ArrayList<String>propriedades = new ArrayList<String>();
 
         propriedades = helper.propriedadesPorId(idUsuario);
-        
+
         spinner = (Spinner)findViewById(R.id.spin);
 
         ArrayAdapter adaptadorPropriedades = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,propriedades);
