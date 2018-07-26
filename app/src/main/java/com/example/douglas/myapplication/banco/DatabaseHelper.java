@@ -255,6 +255,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return res;
     }
+
+    public ArrayList<String> propriedadesPorId(Integer id){
+        ArrayList<String>lista = new ArrayList<String>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        db.beginTransaction();
+        try {
+            String query  = "SELECT "+KEY_NOME_PROPRIEDADE+" FROM "+TABLE_PROPRIEDADES+" WHERE "+KEY_FKUSUARIO+ "= "+id+";";
+            Cursor c = db.rawQuery(query,null);
+            if(c.getCount()>0) {
+                while (c.moveToNext()) {
+                    String nomeProp = c.getString(c.getColumnIndex("nome"));
+                    lista.add(nomeProp);
+                }
+            }
+            db.setTransactionSuccessful();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.close();
+        }
+        return lista;
+    }
 }
 
 

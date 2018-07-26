@@ -29,6 +29,7 @@ public class CadastrosActivity extends AppCompatActivity {
 
     public void callCadastroRebanho(View v) {
         Intent i = new Intent(CadastrosActivity.this,CadastroRebanhoActivity.class);
+        i.putExtra("idUsuario",idUsuario);
         startActivity(i);
     }
 

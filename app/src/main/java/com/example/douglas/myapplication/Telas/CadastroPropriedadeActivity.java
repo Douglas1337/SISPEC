@@ -47,7 +47,7 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
             Propriedade p = new Propriedade();
             p.setNome(txtNomePropriedade.getText().toString());
             p.setExtensao(Double.valueOf(txtExtensaoPropriedade.getText().toString()));
-            p.setProprietario(txtNomeProprietario.getText().toString());
+              p.setProprietario(txtNomeProprietario.getText().toString());
             p.setLocalidade(txtLocalidade.getText().toString());
             p.setCpfProprietario(txtCpfCnpjProprietario.getText().toString());
             p.setMunicipio(txtMunicipio.getText().toString());
