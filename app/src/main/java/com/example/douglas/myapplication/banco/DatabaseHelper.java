@@ -228,52 +228,75 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
         int a = cursor.getCount();
-        if(a==1){
-            Map<String,String> mapa = new HashMap<>();
+        if (a == 1) {
+            Map<String, String> mapa = new HashMap<>();
             int id = cursor.getInt(0);
             cursor.close();
             return id;
-        }else{
+        } else {
             return -1; // retornará -1 se houver usuarios com mesmo login e senha
         }
 
 
     }
 
+
+    /*
+     *   VERIFICA SE A PROPRIEDADE TEM NOME DUPLICADO
+     *   true = OK
+     *   false = Já existe o nome
+     * */
+    public Boolean buscaPropriedadeRepetida(String nome, int idUsuario) {
+        String sql = "Select idPropriedade from propriedades where nome='" + nome + "' and fkUsuario ="+idUsuario+";" ;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        int qtdLogin = cursor.getCount();//conta o retorno de quantos foram selecionados
+        if (qtdLogin > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
     public long inserePropriedade(Propriedade propriedade) {
 
         ContentValues cv = new ContentValues();
-        cv.put("nome",propriedade.getNome());
-        cv.put("extensao",propriedade.getExtensao());
-        cv.put("nomeProprietario",propriedade.getProprietario());
-        cv.put("cpfCnpjProprietario",propriedade.getCpfProprietario());
-        cv.put("municipio",propriedade.getMunicipio());
-        cv.put("localidade",propriedade.getLocalidade());
+        cv.put("nome", propriedade.getNome());
+        cv.put("extensao", propriedade.getExtensao());
+        cv.put("nomeProprietario", propriedade.getProprietario());
+        cv.put("cpfCnpjProprietario", propriedade.getCpfProprietario());
+        cv.put("municipio", propriedade.getMunicipio());
+        cv.put("localidade", propriedade.getLocalidade());
         cv.put("fkUsuario", propriedade.getIdUsuario());
 
-        long res = getWritableDatabase().insert("propriedades",null,cv);
+        long res = getWritableDatabase().insert("propriedades", null, cv);
+
+        getWritableDatabase().close();
 
         return res;
+
+
     }
 
-    public ArrayList<String> propriedadesPorId(Integer id){
-        ArrayList<String>lista = new ArrayList<String>();
+    public ArrayList<String> propriedadesPorId(Integer id) {
+        ArrayList<String> lista = new ArrayList<String>();
 
         SQLiteDatabase db = getReadableDatabase();
         db.beginTransaction();
         try {
-            String query  = "SELECT "+KEY_NOME_PROPRIEDADE+" FROM "+TABLE_PROPRIEDADES+" WHERE "+KEY_FKUSUARIO+ "= "+id+";";
-            Cursor c = db.rawQuery(query,null);
-            if(c.getCount()>0) {
+            String query = "SELECT " + KEY_NOME_PROPRIEDADE + " FROM " + TABLE_PROPRIEDADES + " WHERE " + KEY_FKUSUARIO + "= " + id + ";";
+            Cursor c = db.rawQuery(query, null);
+            if (c.getCount() > 0) {
                 while (c.moveToNext()) {
                     String nomeProp = c.getString(c.getColumnIndex("nome"));
                     lista.add(nomeProp);
                 }
             }
             db.setTransactionSuccessful();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             db.close();
         }
         return lista;

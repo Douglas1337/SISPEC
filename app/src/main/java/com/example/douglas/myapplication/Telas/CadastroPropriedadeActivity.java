@@ -34,36 +34,39 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
         txtCpfCnpjProprietario = (EditText) findViewById(R.id.txtCpfCnpjProprietario);
         txtMunicipio = (EditText) findViewById(R.id.txtMunicipio);
         txtLocalidade = (EditText) findViewById(R.id.txtLocalidade);//obrigatório
-
-        helper = new DatabaseHelper(getApplicationContext());
-
     }
-
 
 
     public void cadastraPropriedade(View view) {
 
-        if(verificaCampos()){
+        helper = new DatabaseHelper(getApplicationContext());
+
+        if (verificaCampos()) {
             Propriedade p = new Propriedade();
             p.setNome(txtNomePropriedade.getText().toString());
             p.setExtensao(Double.valueOf(txtExtensaoPropriedade.getText().toString()));
-              p.setProprietario(txtNomeProprietario.getText().toString());
+            p.setProprietario(txtNomeProprietario.getText().toString());
             p.setLocalidade(txtLocalidade.getText().toString());
             p.setCpfProprietario(txtCpfCnpjProprietario.getText().toString());
             p.setMunicipio(txtMunicipio.getText().toString());
             p.setIdUsuario(idUsuario);
-            long cadastra = helper.inserePropriedade(p);
-            if (cadastra!=-1) {
-                Toast.makeText(this, "Propriedade cadastrada!", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(CadastroPropriedadeActivity.this,CadastrosActivity.class);
-                i.putExtra("idUsuario",idUsuario);
-                startActivity(i);
+            if (helper.buscaPropriedadeRepetida(p.getNome(),idUsuario)) {
+                long cadastra = helper.inserePropriedade(p);
+                if (cadastra != -1) {
+                    Toast.makeText(this, "Propriedade cadastrada!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(CadastroPropriedadeActivity.this, CadastrosActivity.class);
+                    i.putExtra("idUsuario", idUsuario);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(this, "Erro ao cadastrar a propriedade !", Toast.LENGTH_LONG).show();
+                }
             }else{
-                Toast.makeText(this, "Erro ao cadastrar a propriedade !", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Propriedade com o mesmo nome já cadastrada!", Toast.LENGTH_LONG).show();
             }
-        }else{
+        } else {
             Toast.makeText(this, "Campos NOME DA PROPRIEDADE e LOCALIDADE são obrigatórios", Toast.LENGTH_LONG).show();
         }
+        helper.close();
 
     }
 
@@ -76,7 +79,6 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
         } else {
             return false;
         }
-
     }
 
 
