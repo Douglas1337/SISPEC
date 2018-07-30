@@ -61,7 +61,7 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
                     Toast.makeText(this, "Erro ao cadastrar a propriedade !", Toast.LENGTH_LONG).show();
                 }
             }else{
-                Toast.makeText(this, "Propriedade com o mesmo nome já cadastrada!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Nome já cadastrado, insira outro.", Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(this, "Campos NOME DA PROPRIEDADE e LOCALIDADE são obrigatórios", Toast.LENGTH_LONG).show();

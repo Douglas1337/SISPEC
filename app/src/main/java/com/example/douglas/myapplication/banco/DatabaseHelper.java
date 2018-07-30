@@ -247,15 +247,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      *   false = Já existe o nome
      * */
     public Boolean buscaPropriedadeRepetida(String nome, int idUsuario) {
-        String sql = "Select idPropriedade from propriedades where nome='" + nome + "' and fkUsuario ="+idUsuario+";" ;
+        boolean retorno  = false;
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(sql, null);
-        int qtdLogin = cursor.getCount();//conta o retorno de quantos foram selecionados
-        if (qtdLogin > 0) {
-            return false;
-        } else {
-            return true;
+        db.beginTransaction();
+        try {
+            String sql = "Select idPropriedade from propriedades where nome='" + nome + "' and fkUsuario =" + idUsuario + ";";
+
+            Cursor cursor = db.rawQuery(sql, null);
+
+            int qtdLogin = cursor.getCount();//conta o retorno de quantos foram selecionados
+            if (qtdLogin > 0) {
+                retorno = false;
+            } else {
+                retorno = true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.close();
         }
+        return retorno;
     }
 
 
