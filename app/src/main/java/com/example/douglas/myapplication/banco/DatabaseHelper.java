@@ -265,6 +265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            db.endTransaction();
             db.close();
         }
         return retorno;
@@ -305,10 +306,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     lista.add(nomeProp);
                 }
             }
-            db.setTransactionSuccessful();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            db.endTransaction();
             db.close();
         }
         return lista;
