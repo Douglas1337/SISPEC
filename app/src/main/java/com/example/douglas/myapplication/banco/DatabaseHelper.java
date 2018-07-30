@@ -199,6 +199,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /********************************************************************************
+     * 08/08/2018 - DOUGLAS ALVES                                                   *
+     * ALTERAÇÕES (DATA E NOME):                                                    *
+     * INSERE NO BD UM USUARIO RECEBENDO COMO PARAMETRO UM OBJETO DE MESMO NOME     *
+     * ******************************************************************************/
     public long insereUsuario(Usuario usuario) {
 
         ContentValues cv = new ContentValues();
@@ -210,6 +215,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return resultado;
     }
 
+    /********************************************************************************
+     * 16/08/2018 - DOUGLAS ALVES                                                   *
+     * ALTERAÇÕES (DATA E NOME):                                                    *
+     * BUSCA NO BD UM LOGIN QUE JA ESTÁ SENDO UTILIZADO                             *
+     * ******************************************************************************/
     public Boolean buscaLoginRepetido(String login) {
         String sql = "Select idUsuario from usuarios where login='" + login + "';";
         SQLiteDatabase db = getReadableDatabase();
@@ -222,6 +232,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    /********************************************************************************
+     * 16/08/2018 - DOUGLAS ALVES                                                   *
+     * ALTERAÇÕES (DATA E NOME):                                                    *
+     * BUSCA NO BD USUARIO CADASTRADO PARA FINS DE LOGIN                            *
+     * ******************************************************************************/
     public int buscaUsuario(String login, String senha) {
         String sql = "Select idUsuario from usuarios where login='" + login + "' and senha='" + senha + "';";
         SQLiteDatabase db = getReadableDatabase();
@@ -241,11 +256,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /*
-     *   VERIFICA SE A PROPRIEDADE TEM NOME DUPLICADO
-     *   true = OK
-     *   false = Já existe o nome
-     * */
+    /****************************************************
+     * 13/08/2018- DOUGLAS ALVES                        *
+     * ALTERAÇÕES (DATA E NOME):                        *
+     *   VERIFICA SE A PROPRIEDADE TEM NOME DUPLICADO   *
+     *   true = OK                                      *
+     *   false = Já existe o nome                       *
+     ***************************************************/
     public Boolean buscaPropriedadeRepetida(String nome, int idUsuario) {
 
         boolean retorno = false;
@@ -271,7 +288,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return retorno;
     }
 
-
+    /********************************************************************************
+     * 10/08/2018 - DOUGLAS ALVES                                                   *
+     * ALTERAÇÕES (DATA E NOME):                                                    *
+     *                                                                              *
+     * INSERE NO BD UMA PROPRIEDADE RECEBENDO COMO PARAMETRO UM OBJETO DE MESMO NOME*
+     ********************************************************************************/
     public long inserePropriedade(Propriedade propriedade) {
 
         ContentValues cv = new ContentValues();
@@ -289,9 +311,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return res;
 
-
     }
 
+
+    /*****************************************************************************
+     * 27/07/2018 - Douglas Alves
+     * ALTERAÇÕES (DATA E NOME):
+     *
+     * RECEBE  O ID DO USUARIO, RETORNA O UMA LISTA DAS PROPRIEDADES*
+     *****************************************************************************/
     public ArrayList<String> propriedadesPorId(Integer id) {
         ArrayList<String> lista = new ArrayList<String>();
 
@@ -306,7 +334,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     lista.add(nomeProp);
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -315,6 +342,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return lista;
     }
+
+    /******************************************************************************
+     * 30/07/2018 - Douglas Alves                                                 *
+     * RECEBE O NOME DA PROPRIEDADE E O ID DO USUARIO, RETORNA O ID DA PROPRIEDADE*
+     *****************************************************************************/
+    public int propriedadePorNomeEId(String nomePropriedade, int idUsuario) {
+        int ret = 0;
+
+        return ret;
+    }
 }
-
-

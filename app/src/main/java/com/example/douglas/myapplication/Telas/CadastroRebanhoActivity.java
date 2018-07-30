@@ -22,6 +22,8 @@ public class  CadastroRebanhoActivity extends AppCompatActivity {
     private int idUsuario;
     DatabaseHelper helper;
     private String selectItem;
+    private EditText numBrinco,numRegistro,raca,pelagem,tipo,origemPai,origemMae;
+
 
 
     @Override
@@ -34,19 +36,12 @@ public class  CadastroRebanhoActivity extends AppCompatActivity {
             idUsuario = ex.getInt("idUsuario");
         }
         ArrayList<String>propriedades = new ArrayList<String>();
-
-
         propriedades.add("Selecione a propriedade");
-
-
         propriedades = helper.propriedadesPorId(idUsuario);
-
         spinner = (Spinner)findViewById(R.id.spin);
-
         ArrayAdapter adaptadorPropriedades = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,propriedades);
         spinner.setAdapter(adaptadorPropriedades);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                  selectItem  = (String) adapterView.getItemAtPosition(i);// pega a string que foi selecionada no spinner
@@ -58,5 +53,10 @@ public class  CadastroRebanhoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void callRegistrar(View view) {
+
     }
 }
