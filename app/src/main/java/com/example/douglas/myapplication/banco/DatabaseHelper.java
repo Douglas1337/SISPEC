@@ -247,7 +247,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      *   false = Já existe o nome
      * */
     public Boolean buscaPropriedadeRepetida(String nome, int idUsuario) {
-        boolean retorno  = false;
+
+        boolean retorno = false;
         SQLiteDatabase db = getReadableDatabase();
         db.beginTransaction();
         try {
@@ -261,9 +262,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } else {
                 retorno = true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             db.close();
         }
         return retorno;
