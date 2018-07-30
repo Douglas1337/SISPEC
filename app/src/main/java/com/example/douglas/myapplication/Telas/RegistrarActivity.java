@@ -66,8 +66,11 @@ public class RegistrarActivity extends AppCompatActivity {
             return false;
         }
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ab8987ed01ec0e71e4fa60917ee4d8fa4828c0aa
     protected void onDestroy() {
         super.onDestroy();
         helper.close();

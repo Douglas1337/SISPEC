@@ -47,6 +47,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <EditText
+                    android:id="@+id/numBrinco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15sp"
@@ -70,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
-                android:hint="@string/nomeProprietario">
+                android:hint="@string/numRegistro">
             </EditText>
             <EditText
                 android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
                 android:inputType="number"
-                android:hint="@string/cpfcnpjProprietario">
+                android:hint="@string/raca">
             </EditText>
 
             <EditText
@@ -86,14 +87,28 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
-                android:hint="@string/municipioPropriedade">
+                android:hint="@string/pelagem">
             </EditText>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
-                android:hint="@string/localidadePropriedade">
+                android:hint="@string/tipo">
+            </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:background="@color/amarelo"
+                android:hint="@string/origemPai">
+            </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:background="@color/amarelo"
+                android:hint="@string/origemMae">
             </EditText>
 
             <Button
