@@ -35,16 +35,11 @@ public class  CadastroRebanhoActivity extends AppCompatActivity {
         }
         ArrayList<String>propriedades = new ArrayList<String>();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        List<String> propriedades = new ArrayList<>();
+
         propriedades.add("Selecione a propriedade");
-=======
+
+
         propriedades = helper.propriedadesPorId(idUsuario);
->>>>>>> ab8987ed01ec0e71e4fa60917ee4d8fa4828c0aa
-=======
-        propriedades = helper.propriedadesPorId(idUsuario);
->>>>>>> 14e1f0d3c1befe8ae6b9ccbb032657593ab7b6f2
 
         spinner = (Spinner)findViewById(R.id.spin);
 
