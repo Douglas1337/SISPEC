@@ -25,7 +25,7 @@ public class CadastroRebanhoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_rebanho);
 
-        List<String> propriedades = new ArrayList<String>();
+        List<String> propriedades = new ArrayList<>();
         propriedades.add("Selecione a propriedade");
 
         spinner = (Spinner)findViewById(R.id.spin);
