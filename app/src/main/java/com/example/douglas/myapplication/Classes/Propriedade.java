@@ -6,6 +6,8 @@ package com.example.douglas.myapplication.Classes;
 
 public class Propriedade {
 
+
+    private int id;
     private String nome;
     private Double extensao;
     private String proprietario;
@@ -14,6 +16,9 @@ public class Propriedade {
     private String localidade;
     private int idUsuario;
 
+    public int getId() { return id;}
+
+    public void setId(int id) { this.id = id;}
 
     public String getNome() {
         return nome;
@@ -43,9 +48,7 @@ public class Propriedade {
         return cpfProprietario;
     }
 
-    public void setCpfProprietario(String cpfProprietario) {
-        this.cpfProprietario = cpfProprietario;
-    }
+    public void setCpfProprietario(String cpfProprietario) { this.cpfProprietario = cpfProprietario;}
 
     public String getMunicipio() {
         return municipio;
@@ -63,7 +66,6 @@ public class Propriedade {
         this.localidade = localidade;
     }
 
-
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -71,8 +73,6 @@ public class Propriedade {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-
-
 
 
 }

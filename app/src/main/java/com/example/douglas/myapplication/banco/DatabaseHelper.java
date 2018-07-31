@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.douglas.myapplication.Classes.Animal;
 import com.example.douglas.myapplication.Classes.Propriedade;
 import com.example.douglas.myapplication.Classes.Usuario;
 
@@ -244,7 +245,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         int a = cursor.getCount();
         if (a == 1) {
-            Map<String, String> mapa = new HashMap<>();
             int id = cursor.getInt(0);
             cursor.close();
             return id;
@@ -353,13 +353,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         db.beginTransaction();
         try {
-            String query = "SELECT "+KEY_ID_PROPRIEDADE+" FROM "+TABLE_PROPRIEDADES+" WHERE nome="+nomePropriedade+" and "+KEY_FKUSUARIO+"="+idUsuario+";";
-        }catch (Exception e){
+            String query = "SELECT " + KEY_ID_PROPRIEDADE + " FROM " + TABLE_PROPRIEDADES + " WHERE nome=" + nomePropriedade + " and " + KEY_FKUSUARIO + "=" + idUsuario + ";";
+            Cursor cursor = db.rawQuery(query, null);
+            int a = cursor.getCount();
+            if (a == 1) {
+                int id = cursor.getInt(0);
+                cursor.close();
+                return id;
+            } else {
+                return -1; // retornará -1 se houver usuarios com mesmo login e senha
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             db.endTransaction();
         }
 
         return ret;
+    }
+
+
+    public long cadastraAnimal(Animal animal) {
+
+        ContentValues cv = new ContentValues();
+        cv.put("numBrinco",animal.getNumBrinco());
+        cv.put("numRegistro",animal.getNumRegistro());
+        cv.put("raca",animal.getRaca());
+        cv.put("tipo",animal.getTipo());
+        cv.put("pelagem",animal.getPelagem());
+        cv.put("origemPai",animal.getOrigemPai());
+        cv.put("origemMae",animal.getOrigemMae());
+        cv.put("fkPropriedade",animal.getPropriedade().getId());
+
+        long res = getWritableDatabase().insert(TABLE_ANIMAIS,null,cv);
+
+        return res;
     }
 }
