@@ -293,7 +293,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * ALTERAÇÕES (DATA E NOME):                                                    *
      *                                                                              *
      * INSERE NO BD UMA PROPRIEDADE RECEBENDO COMO PARAMETRO UM OBJETO DE MESMO NOME*
-     ********************************************************************************/
+     *******************************************************************************/
     public long inserePropriedade(Propriedade propriedade) {
 
         ContentValues cv = new ContentValues();
@@ -315,11 +315,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     /*****************************************************************************
-     * 27/07/2018 - Douglas Alves
-     * ALTERAÇÕES (DATA E NOME):
-     *
-     * RECEBE  O ID DO USUARIO, RETORNA O UMA LISTA DAS PROPRIEDADES*
-     *****************************************************************************/
+     * 27/07/2018 - Douglas Alves                                                *
+     * ALTERAÇÕES (DATA E NOME):                                                 *
+     *                                                                           *
+     * RECEBE  O ID DO USUARIO, RETORNA O UMA LISTA DAS PROPRIEDADES             *
+     ****************************************************************************/
     public ArrayList<String> propriedadesPorId(Integer id) {
         ArrayList<String> lista = new ArrayList<String>();
 
@@ -372,6 +372,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return ret;
     }
 
+    /********************************************************************************
+     * 10/08/2018 - DOUGLAS ALVES                                                   *
+     * ALTERAÇÕES (DATA E NOME):                                                    *
+     *                                                                              *
+     * INSERE NO BD UM ANIMAL RECEBENDO COMO PARAMETRO UM OBJETO DE MESMO NOME*
+     *******************************************************************************/
 
     public long cadastraAnimal(Animal animal) {
 
