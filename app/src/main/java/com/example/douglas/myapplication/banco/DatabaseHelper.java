@@ -350,6 +350,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int propriedadePorNomeEId(String nomePropriedade, int idUsuario) {
         int ret = 0;
 
+        SQLiteDatabase db = getReadableDatabase();
+        db.beginTransaction();
+        try {
+            String query = "SELECT "+KEY_ID_PROPRIEDADE+" FROM "+TABLE_PROPRIEDADES+" WHERE nome="+nomePropriedade+" and "+KEY_FKUSUARIO+"="+idUsuario+";";
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            db.endTransaction();
+        }
+
         return ret;
     }
 }
