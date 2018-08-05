@@ -1,14 +1,11 @@
 package com.example.douglas.myapplication.Telas;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.douglas.myapplication.Classes.Propriedade;
-import com.example.douglas.myapplication.Classes.Usuario;
 import com.example.douglas.myapplication.R;
 import com.example.douglas.myapplication.banco.DatabaseHelper;
 
@@ -35,7 +32,6 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
         txtMunicipio = (EditText) findViewById(R.id.txtMunicipio);
         txtLocalidade = (EditText) findViewById(R.id.txtLocalidade);//obrigatório
     }
-
 
     public void cadastraPropriedade(View view) {
 
@@ -67,7 +63,6 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
             Toast.makeText(this, "Campos NOME DA PROPRIEDADE e LOCALIDADE são obrigatórios", Toast.LENGTH_LONG).show();
         }
         helper.close();
-
     }
 
     private boolean verificaCampos() {//verifica se os campos de nome da propriedade ou localidade estão vazios
@@ -80,6 +75,4 @@ public class CadastroPropriedadeActivity extends AppCompatActivity {
             return false;
         }
     }
-
-
 }

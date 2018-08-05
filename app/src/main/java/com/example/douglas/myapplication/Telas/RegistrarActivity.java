@@ -71,5 +71,4 @@ public class RegistrarActivity extends AppCompatActivity {
         super.onDestroy();
         helper.close();
     }
-
 }

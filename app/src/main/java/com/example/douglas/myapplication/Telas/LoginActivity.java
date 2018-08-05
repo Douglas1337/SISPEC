@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         edtLogin = (EditText) findViewById(R.id.edtLogin);
         edtPswd = (EditText) findViewById(R.id.edtPswd);
         helper = new DatabaseHelper(this);
-
     }
 
     //logica para o usuário entrar no sistema

@@ -66,7 +66,6 @@ public class CadastroRebanhoActivity extends AppCompatActivity {
         });
     }
 
-
     public void callRegistrar(View view) {
         int idPropriedade = helper.propriedadePorNomeEId(selectItem,idUsuario);
         if(selectItem != "") {

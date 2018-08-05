@@ -239,9 +239,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * BUSCA NO BD USUARIO CADASTRADO PARA FINS DE LOGIN                            *
      * ******************************************************************************/
     public int buscaUsuario(String login, String senha) {
-        String sql = "Select idUsuario from usuarios where login='" + login + "' and senha='" + senha + "';";
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = db.rawQuery("Select idUsuario from usuarios where login=? and senha=? ;",new String[]{login,senha});
         cursor.moveToFirst();
         int a = cursor.getCount();
         if (a == 1) {
