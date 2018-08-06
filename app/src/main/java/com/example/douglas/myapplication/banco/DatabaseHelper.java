@@ -80,7 +80,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // COLUNAS DA TABELA INSUMO
     private static final String KEY_ID_INSUMOS = "idInsumo";
     private static final String KEY_NOME_INSUMO = "nomeInsumo";
+    private static final String KEY_QTD_COMPRADA = "qtdComprada";
     private static final String KEY_CUSTO_INSUMO = "custoInsumo";
+    private static final String KEY_TIPO_VOLUME = "tipoVolume";
     private static final String KEY_UTILIZACAO_INSUMO = "utilizacaoInsumo";
     private static final String KEY_DATA_COMPRA = "dataCompra";
 
@@ -145,6 +147,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             KEY_ID_INSUMOS + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
             KEY_NOME_INSUMO + " TEXT ," +
             KEY_CUSTO_INSUMO + " TEXT ," +
+            KEY_QTD_COMPRADA + " TEXT , "+
+            KEY_TIPO_VOLUME + " TEXT , "+
             KEY_DATA_COMPRA + " TEXT ," +
             KEY_UTILIZACAO_INSUMO + " TEXT );";
 
