@@ -250,8 +250,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             return -1; // retornará -1 se houver usuarios com mesmo login e senha
         }
-
-
     }
 
 
