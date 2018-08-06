@@ -44,6 +44,13 @@
     <string name="escolhaARaca">Escolha a raça do animal</string>
     <string name="escolhaAPelagem">Escolha a pelagem</string>
     <string name="escolhaOTipo">Escolha o tipo</string>
+    <string name="title_activity_cadastro_insumo">CadastroInsumo</string>
+    <string name="cadastrosInsumos">Cadastro de Insumos</string>
+    <string name="nomeInsumo">Nome do Insumo</string>
+    <string name="custoInsumo">Custo do insumo</string>
+    <string name="dataCompraInsumo">Data da compra do insumo</string>
+    <string name="volumeInsumo">Volume do insumo</string>
+    <string name="qtdInsumoComprado">Quantidade comprada</string>
 
 
 </resources>

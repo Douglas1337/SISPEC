@@ -28,6 +28,10 @@
         <activity
             android:name=".Telas.RegistrarActivity"
             android:label="@string/title_activity_registrar"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Telas.CadastroInsumoActivity"
+            android:label="@string/title_activity_cadastro_insumo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
