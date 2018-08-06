@@ -41,6 +41,9 @@
     <string name="tipo">Tipo</string>
     <string name="origemPai">Origem Pai</string>
     <string name="origemMae">Origem Mãe</string>
+    <string name="escolhaARaca">Escolha a raça do animal</string>
+    <string name="escolhaAPelagem">Escolha a pelagem</string>
+    <string name="escolhaOTipo">Escolha o tipo</string>
 
 
 </resources>

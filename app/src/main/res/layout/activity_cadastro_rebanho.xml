@@ -18,51 +18,50 @@
             android:orientation="vertical">
 
             <TextView
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cadastrosRebanho"
                 android:textAlignment="center"
-                android:textSize="25sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_marginTop="15sp"
-                android:textColor="@color/colorPreto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
                 android:text="@string/EscolhaAPropriedade"
+                android:textColor="@color/colorPreto" />
 
-                 />
             <Spinner
                 android:id="@+id/spin"
-                android:spinnerMode="dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/botao_customizado">
+                android:background="@drawable/botao_customizado"
+                android:spinnerMode="dropdown"></Spinner>
 
-            </Spinner>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/numBrinco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15sp"
+                    android:layout_weight="1"
                     android:background="@color/amarelo"
-                    android:inputType="numberDecimal"
                     android:hint="@string/numeracaoDoBrinco"
-                    android:layout_weight="1">
-                </EditText>
+                    android:inputType="number"></EditText>
+
                 <Button
                     android:id="@+id/lerChip"
-                    android:text="@string/lerChip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/botao_customizado"/>
+                    android:background="@drawable/botao_customizado"
+                    android:text="@string/lerChip" />
 
             </LinearLayout>
 
@@ -72,57 +71,72 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
-                android:hint="@string/numRegistro">
-            </EditText>
-            <EditText
+                android:hint="@string/numRegistro"
+                android:inputType="number"></EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="@string/escolhaARaca"
+                android:textColor="@color/colorPreto" />
+
+            <Spinner
                 android:id="@+id/raca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15sp"
-                android:background="@color/amarelo"
-                android:inputType="number"
-                android:hint="@string/raca">
-            </EditText>
+                android:background="@drawable/botao_customizado"
+                android:spinnerMode="dropdown"></Spinner>
 
-            <EditText
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="@string/escolhaAPelagem"
+                android:textColor="@color/colorPreto" />
+            <Spinner
                 android:id="@+id/pelagem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15sp"
-                android:background="@color/amarelo"
-                android:hint="@string/pelagem">
-            </EditText>
-            <EditText
+                android:background="@drawable/botao_customizado"
+                android:spinnerMode="dropdown"></Spinner>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="@string/escolhaOTipo"
+                android:textColor="@color/colorPreto" />
+            <Spinner
                 android:id="@+id/tipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
-                android:background="@color/amarelo"
-                android:hint="@string/tipo">
-            </EditText>
+                android:background="@drawable/botao_customizado"
+                android:hint="@string/tipo"></Spinner>
+
             <EditText
                 android:id="@+id/origemPai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
-                android:hint="@string/origemPai">
-            </EditText>
+                android:hint="@string/origemPai"></EditText>
+
             <EditText
                 android:id="@+id/origemMae"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@color/amarelo"
-                android:hint="@string/origemMae">
-            </EditText>
+                android:hint="@string/origemMae"></EditText>
 
             <Button
-                android:onClick="callRegistrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:background="@drawable/botao_customizado"
+                android:onClick="callRegistrar"
                 android:text="@string/cadastrar" />
         </LinearLayout>
     </ScrollView>
